@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
 
   def accept_invite
     current_user.confirm_friend(User.find(params[:user_id]))
-    flash[:notice] = 'Friend request accepted'
+    flash[:notice] = 'Friend request accepted!'
     redirect_to users_path
   end
 
