@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
 
   def create
     invite = current_user.invitations.build(invite_parmas)
-    invite.is_accepted = false
+    invite.accepted = false
     invite.save
     redirect_to users_path
   end
