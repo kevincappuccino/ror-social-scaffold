@@ -3,6 +3,20 @@
     <% @users.each do |user| %>
       <li>
         Name: <%= user.name %>
+        <% if @user_requests.include?(user) %>
+          <button><%= link_to 'Accept', accept_friend_path(user_id: user.id) , method: :post %></button>
+          <button><%= link_to 'Dismiss', remove_friend_path(user_id: user.id) , method: :delete %></button>
+        <% else %>
+          <% if current_user.is_friend?(user) %>
+            <button><%= link_to 'Remove', remove_friend_path(user_id: user.id) , method: :delete , data: {confirm: "Are you sure you want to remove #{user.name}??"}  %></button> 
+          <% elsif @pending_requests.include?(user) %>
+            <button><%= link_to 'Request Pending', '#' %></button> 
+
+          <% elsif user != current_user %>
+            <button><%= link_to 'Invite to friendship', invitations_path(friend_id: user.id) , method: :post %></button> 
+          <% end %>
+
+        <% end %>
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
