@@ -10,12 +10,11 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :invitations
-  has_many :friend_requests, class_name: :Invitation, foreign_key: :friend_id
-end
+  has_many :received_invitations, class_name: :Invitation, foreign_key: :friend_id
 
 def friends
   friends_arr = invitations.map { |request| request.friend_id if request.is_accepted == true }
-  friends_arr += recieved_invitations.map { |request| request.user_id if request.is_accepted == true }
+  friends_arr += received_invitations.map { |request| request.user_id if request.is_accepted == true }
   friends_arr.compact
 end
 
@@ -24,15 +23,16 @@ def pending_requests
 end
 
 def friend_requests
-  recieved_invitations.map { |request| request.user unless request.is_accepted }.compact
+  received_invitations.map { |request| request.user unless request.is_accepted }.compact
 end
 
 def confirm_friend(user)
-  confrimation = recieved_invitations.find { |request| request.user == user }
+  confrimation = received_invitations.find { |request| request.user == user }
   confrimation.is_accepted = true
   confrimation.save
 end
 
 def is_friend?(user)
   friends.include?(user.id)
+end
 end
