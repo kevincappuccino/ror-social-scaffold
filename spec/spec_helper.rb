@@ -1,34 +1,24 @@
-require 'rspec'
-require 'rspec/expectations'
-require 'capybara'
-require 'capybara/rspec'
-
 RSpec.configure do |config|
-  
   config.expect_with :rspec do |expectations|
-
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
   config.mock_with :rspec do |mocks|
-  
     mocks.verify_partial_doubles = true
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-  config.include Capybara::DSL
 
-end
+  config.filter_run_when_matching :focus
 
-Capybara.configure do |config|
-  # digo que o driver padrao eh o do selenium.
-  config.default_driver = :selenium 
-  # defino a url padrao.
-  config.app_host = "http://localhost:3000"
-  # defino o tempo maximo de espera para os elementos.
-  config.default_max_wait_time = 30
-end
+  config.example_status_persistence_file_path = 'spec/examples.txt'
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :firefox)
+  config.disable_monkey_patching!
+
+  config.default_formatter = 'doc' if config.files_to_run.one?
+
+  config.profile_examples = 10
+
+  config.order = :random
+
+  Kernel.srand config.seed
 end
