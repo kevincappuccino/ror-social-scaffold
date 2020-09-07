@@ -32,7 +32,7 @@ class User < ApplicationRecord
     confrimation.save
   end
 
-  def is_friend?(user)
+  def friend?(user)
     friends.include?(user.id)
   end
 end
