@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.ordered_by_most_recent
+    @users = User.all
+    @user_requests = current_user.friend_requests
+    @pending_requests = current_user.pending_requests
   end
 
   def add_friend
