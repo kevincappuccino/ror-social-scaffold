@@ -47,7 +47,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
-
 end
 
 group :test do
@@ -55,9 +54,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper', '1.2.0'
-  gem 'webdrivers'
   gem 'rspec-rails', '~>3.9.1'
   gem 'shoulda-matchers', '~>3.1'
+  gem 'webdrivers'
 end
 
 group :development do
