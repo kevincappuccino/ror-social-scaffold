@@ -6,4 +6,33 @@
       <%= render @posts %>
     </ul>
   </article>
+  <article>
+    <h3>List of users to interact with: </h3>
+    <% @users.each do |user| %>
+      <% if user == current_user %>
+        <% next %>
+      <% end %>
+      <li>
+        <h4 class="d-inline">
+          <%= link_to "#{user.name}",  user_path(user), class: 'profile-link' %>
+        </h4>
+        
+        <% if @user_requests.include?(user) %>
+          <button><%= link_to 'Accept request', accept_friend_path(user_id: user.id) , method: :post %></button>
+          <button><%= link_to 'Reject request', remove_friend_path(user_id: user.id) , method: :delete %></button>
+        <% else %>
+          <% if current_user.friend?(user) %>
+            <button><%= link_to 'Unfriend', remove_friend_path(user_id: user.id) , method: :delete , data: {confirm: "Are you sure you want to remove #{user.name} from your friend list?"}  %></button> 
+          <% elsif @pending_requests.include?(user) %>
+            <button><%= link_to 'Request Pending', '#' %></button> 
+
+          <% elsif user != current_user %>
+            <button><%= link_to 'Request friendship', invitations_path(friend_id: user.id) , method: :post %></button> 
+          <% end %>
+
+        <% end %>
+        
+      </li>
+    <% end %>
+  </article>
 </section>
