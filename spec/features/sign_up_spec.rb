@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# Integration test with Capybara
 RSpec.describe 'signup page', type: :feature do
   scenario 'signup page' do
     visit '/users/sign_up'
