@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
   end
-# Unitary test with Rspec
+  # Unitary test with Rspec
   describe 'association' do
     it { should have_many(:posts) }
     it { should have_many(:comments) }
