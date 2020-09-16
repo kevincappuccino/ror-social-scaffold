@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# Integration test with Capybara
 RSpec.describe 'login page', type: :feature do
   let(:user) do
     User.create(name: 'tester', email: 'tester@gmail.com',
