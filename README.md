@@ -28,19 +28,11 @@
 </p>
 
 ## 🧐 About <a name = "about"></a>
-<h3 align="center">This soonly will be a social media app, where users will can post, comment, like and add friends </h3>
+<h3 align="center">This is a social media app, where users will can post, comment, like and add friends </h3>
 
-<!-- ## ✨ Features
 
-☑ Login with email
-
-☑ Create events
-
-☑ Attend to events
-
-☑ Tested with Rspec and Capybara
-
-☑ Valid HTML5 & CSS3 -->
+## 📺 Live demo
+[Live demo](https://chamanodeploy.herokuapp.com/users/sign_in)
 
 ## 👷‍♂️ ‍Installing <a name= "installing"></a>
 ### Prerequisites
