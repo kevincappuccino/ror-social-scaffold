@@ -28,7 +28,7 @@
 </p>
 
 ## 🧐 About <a name = "about"></a>
-<h3 align="center">This soonly will be a social media app, where users will can post, comment, like and add friends </h3>
+<h3 align="center">This is a social media app, where users will can post, comment, like and add friends </h3>
 
 
 ## 📺 Live demo
